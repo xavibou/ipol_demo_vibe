@@ -22,8 +22,6 @@ def main(input, output, sample_num, radius, min_matches, update_factor):
     width  = int(v.get(3))
     height = int(v.get(4))
     out = cv2.VideoWriter(output, fourcc, fps, (width, height))
-    v.release()
-    out.release()
 
     
 
