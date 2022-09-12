@@ -16,7 +16,7 @@ def main(input, output, sample_num, radius, min_matches, update_factor):
     #v = u + np.random.randn(*u.shape) * sigma
 
     #iio.write(output, input)
-    cv2.VideoWriter('output.avi', input)
+    cv2.VideoWriter('output.avi', input, -1)
 
 if __name__ == "__main__":
 
