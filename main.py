@@ -32,7 +32,7 @@ if __name__ == "__main__":
 
     # Read input and parameters
     input = "input_0.mp4"
-    output = "output"
+    output = "output.mp4"
     sample_num = int(os.environ['sample_num'])
     radius = int(os.environ['radius'])
     min_matches = int(os.environ['min_matches'])
