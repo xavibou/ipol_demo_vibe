@@ -15,7 +15,7 @@ def main(input, output, sample_num, radius, min_matches, update_factor):
 
     #v = u + np.random.randn(*u.shape) * sigma
 
-    iio.write(output, v)
+    iio.write(output, input)
 
 if __name__ == "__main__":
 
