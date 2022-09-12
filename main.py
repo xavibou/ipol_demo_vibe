@@ -22,13 +22,17 @@ def main(input, output, sample_num, radius, min_matches, update_factor):
     width  = int(v.get(3))
     height = int(v.get(4))
     out = cv2.VideoWriter(output, fourcc, fps, (width, height))
+    v.release()
+    out.release()
 
+    print(os.listdir("."))
     
 
 if __name__ == "__main__":
 
     # Read input and parameters
     input = "input_0.mp4"
+    output = "output.mp4"
     sample_num = int(os.environ['sample_num'])
     radius = int(os.environ['radius'])
     min_matches = int(os.environ['min_matches'])
@@ -37,4 +41,4 @@ if __name__ == "__main__":
     # Check parameter errors
 
     # Run demo
-    main("input_0.mp4", "output.mp4", sample_num, radius, min_matches, update_factor)
+    main("input_0.mp4", output, sample_num, radius, min_matches, update_factor)
