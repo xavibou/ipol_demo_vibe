@@ -16,9 +16,9 @@ def main(input, output, sample_num, radius, min_matches, update_factor):
     #v = u + np.random.randn(*u.shape) * sigma
 
     #iio.write(output, input)
-    fps = v.get(cv2.CV_CAP_PROP_FPS)
-    width  = v.get(cv2.CV_CAP_PROP_FRAME_WIDTH)
-    height = v.get(cv2.CV_CAP_PROP_FRAME_HEIGHT)
+    fps = v.get(cv2.CAP_PROP_FPS)
+    width  = v.get(cv2.CAP_PROP_FRAME_WIDTH)
+    height = v.get(cv2.CAP_PROP_FRAME_HEIGHT)
     cv2.VideoWriter('output.avi', input, fps, (width, height))
 
 if __name__ == "__main__":
