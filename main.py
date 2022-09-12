@@ -26,6 +26,8 @@ def main(input, output, sample_num, radius, min_matches, update_factor):
     out.release()
 
     print(os.listdir("."))
+    print(type(input))
+    print(type(output))
     
 
 if __name__ == "__main__":
