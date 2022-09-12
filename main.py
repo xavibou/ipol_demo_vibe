@@ -21,9 +21,9 @@ def main(input, output, sample_num, radius, min_matches, update_factor):
     fps = v.get(cv2.CAP_PROP_FPS)
     width  = int(v.get(3))
     height = int(v.get(4))
-    output = cv2.VideoWriter('output.mp4', fourcc, fps, (width, height))
+    out = cv2.VideoWriter(output, fourcc, fps, (width, height))
     v.release()
-    output.release()
+    out.release()
 
     
 
