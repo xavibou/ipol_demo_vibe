@@ -19,9 +19,10 @@ def main(input, output, sample_num, radius, min_matches, update_factor):
     #iio.write(output, input)
     fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
     fps = v.get(cv2.CAP_PROP_FPS)
-    width  = v.get(cv2.CAP_PROP_FRAME_WIDTH)
-    height = v.get(cv2.CAP_PROP_FRAME_HEIGHT)
+    width  = int(v.get(3))
+    height = int(v.get(4))
     out = cv2.VideoWriter('output.mp4', fourcc, fps, (width, height))
+    v.release()
     out.release()
 
     
