@@ -2,7 +2,7 @@ import os
 import iio
 import numpy as np
 
-def main(input, output, sample_num, radius, min_matches, update_factor)):
+def main(input, output, sample_num, radius, min_matches, update_factor):
     u = iio.read(input)
     print("hello world", u.shape)
     print("sample_num: {}".format(sample_num))
