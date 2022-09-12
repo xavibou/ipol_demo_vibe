@@ -15,7 +15,7 @@ def main(input, output, sample_num, radius, min_matches, update_factor):
 
     #v = u + np.random.randn(*u.shape) * sigma
 
-    #iio.write(output, v)
+    iio.write(output, v)
 
 if __name__ == "__main__":
 
@@ -29,4 +29,4 @@ if __name__ == "__main__":
     # Check parameter errors
 
     # Run demo
-    main("input_0.png", "output.png", sample_num, radius, min_matches, update_factor)
+    main("input_0.mp4", "output.mp4", sample_num, radius, min_matches, update_factor)
