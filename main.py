@@ -3,6 +3,7 @@ import iio
 import numpy as np
 import cv2
 
+
 def main(input, output, sample_num, radius, min_matches, update_factor):
     #u = iio.read(input)
     v = cv2.VideoCapture(input)
@@ -16,10 +17,14 @@ def main(input, output, sample_num, radius, min_matches, update_factor):
     #v = u + np.random.randn(*u.shape) * sigma
 
     #iio.write(output, input)
+    fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
     fps = v.get(cv2.CAP_PROP_FPS)
     width  = v.get(cv2.CAP_PROP_FRAME_WIDTH)
     height = v.get(cv2.CAP_PROP_FRAME_HEIGHT)
-    cv2.VideoWriter('output.avi', input, fps, (width, height))
+    out = cv2.VideoWriter('output.mp4', fourcc, fps, (width, height))
+    out.release()
+
+    
 
 if __name__ == "__main__":
 
