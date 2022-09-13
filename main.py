@@ -22,14 +22,6 @@ def main(input, output, sample_num, radius, min_matches, update_factor):
     height = int(v.get(4))
     out = cv2.VideoWriter(output, fourcc, fps, (width, height))
 
-    while(True):
-        ret, frame = v.read()
-        out.write(frame)
-        cv2.imshow('frame', frame)
-        c = cv2.waitKey(1)
-        if c & 0xFF == ord('q'):
-            break
-
     v.release()
     out.release()
 

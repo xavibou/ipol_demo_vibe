@@ -5,6 +5,10 @@ FROM registry.ipol.im/ipol:v1-py3.9
 COPY .ipol/packages.txt packages.txt
 RUN apt-get update && apt-get install -y $(cat packages.txt) && rm -rf /var/lib/apt/lists/* && rm packages.txt
 
+#RUN apt-get install -y ffmpeg
+#COPY ..
+#RUN make
+
 # copy the requirements.txt and install python packages
 COPY requirements.txt requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt && rm requirements.txt
