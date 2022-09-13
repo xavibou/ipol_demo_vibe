@@ -17,7 +17,7 @@ def main(input, output, sample_num, radius, min_matches, update_factor):
     #v = u + np.random.randn(*u.shape) * sigma
 
     #iio.write(output, input)
-    fourcc = cv2.VideoWriter_fourcc(*'MP4V')
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     fps = v.get(cv2.CAP_PROP_FPS)
     width  = int(v.get(3))
     height = int(v.get(4))
