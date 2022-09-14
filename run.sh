@@ -14,7 +14,7 @@ mkdir imdir
 ffmpeg -i $1 imdir/out%08d.png
 
 # Apply vibe on the sequence
-./vibe -s $s -r $r -c $c -uf $uf imdir/*
+/vibe -s $s -r $r -c $c -uf $uf imdir/*
 
 # Move output files on a new directory and generate the two sequences
 mkdir masks
