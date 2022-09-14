@@ -1,4 +1,0 @@
-numpy
-iio==0.0.3
-opencv-python
-ffmpeg
