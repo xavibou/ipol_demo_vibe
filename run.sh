@@ -19,8 +19,8 @@ ffmpeg -i $1 -vsync vfr imdir/out%08d.png
 # Move output files on a new directory and generate the two sequences
 mkdir masks
 mv imdir/*mask.png masks
-ffmpeg -framerate 10 -pattern_type glob -i "imdir/*.png" -pix_fmt yuv420p input.mp4
-ffmpeg -framerate 10 -pattern_type glob -i "masks/*.png" -pix_fmt yuv420p output.mp4
+ffmpeg -framerate 10 -pattern_type glob -i "imdir/*.png" -pix_fmt yuv420p input.mov
+ffmpeg -framerate 10 -pattern_type glob -i "masks/*.png" -pix_fmt yuv420p output.mov
 
 # Zip output dir
 zip -r masks.zip masks
