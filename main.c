@@ -247,13 +247,10 @@ int main(int argc, char ** argv)
 
     /* read new image */
     image = iio_read_image_uint8_vec(argv[n + 1], &X, &Y, &C);
-    printf("Processing frame: %s\n", argv[n + 1]);
 
     if( !n )
     {
       /* init ViBe model and set the parameters */
-      image = (uint8_t*)malloc((C * X) * Y);
-
       model = (vibeModel_Sequential_t *)libvibeModel_Sequential_New();
       libvibeModel_Sequential_SetNumberOfSamples(model, numberOfSamples);
       libvibeModel_Sequential_SetMatchingThreshold(model, matchingThreshold);
@@ -263,7 +260,8 @@ int main(int argc, char ** argv)
       libvibeModel_Sequential_AllocInit_8u_C3R(model, image, X, Y);
       libvibeModel_Sequential_SetUpdateFactor(model, updateFactor);
     }
-    segmentation_map = (uint8_t*)malloc(X * Y);
+
+    segmentation_map = (uint8_t*)malloc(X * Y * sizeof(uint8_t));
 
     /* Segmentation step: produces the output mask. */
     libvibeModel_Sequential_Segmentation_8u_C3R(model, image, segmentation_map);
@@ -273,7 +271,6 @@ int main(int argc, char ** argv)
 
     char filename[512];
     FILE *fp;
-    /* sprintf(filename, "%s_change2.png", argv[n + 1]); */
     sprintf(filename, "%s_mask.png", argv[n + 1]);
     fp = fopen(filename, "w+");
     iio_write_image_uint8_vec(filename, segmentation_map, X, Y, 1);
