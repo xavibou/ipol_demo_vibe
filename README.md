@@ -21,9 +21,7 @@ The algorithm can be run on a video file directly via the bash script or on a se
 The bash provided script takes a video input file, extracts its frames and applies ViBe on them. Another directory named masks/ is generated with the output masks from the algorithm. To run the bash scriptm run:
     bash run.sh [path to input file] [numberOfSamples] [matchingThreshold] [matchingNumber] [updateFactor]
 
-
 ### Running with the vibe command:
 The algorithm can also be used using the /vibe command after compilation, which takes a set of RGB frames as input. To run the algorithm, you can simply do: 
     vibe [options] image1 image2 [image3 ... imageN]
-
 
