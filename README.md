@@ -7,7 +7,9 @@ This repository constitutes the implementation of a [demo IPOL](https://ipolcore
 
 ## Compilation :
 The Makefile compiles the original source code of ViBe and combines it with the demo implementation so that different parameters can be easily tested. To compile, simply run:
-    make
+```Shell
+make
+```
 
 ## Usage :
 The algorithm can be run on a video file directly via the bash script or on a sequence of frames via de ./vibe command. Four different parameters are supported:
@@ -19,11 +21,12 @@ The algorithm can be run on a video file directly via the bash script or on a se
 
 ### Running with bash script :
 The bash provided script takes a video input file, extracts its frames and applies ViBe on them. Another directory named masks/ is generated with the output masks from the algorithm. To run the bash scriptm run:
-    bash run.sh [path to input file] [numberOfSamples] [matchingThreshold] [matchingNumber] [updateFactor]
+```Shell
+bash run.sh [path to input file] [numberOfSamples] [matchingThreshold] [matchingNumber] [updateFactor]
+```
 
 ### Running with the vibe command:
-The algorithm can also be used using the /vibe command after compilation, which takes a set of RGB frames as input.
-To run the algorithm, you can simply do:
+The algorithm can also be used using the /vibe command after compilation, which takes a set of RGB frames as input. To run the algorithm, you can simply do:
 ```Shell
 vibe [options] image1 image2 [image3 ... imageN]
 ```
