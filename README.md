@@ -24,5 +24,6 @@ The bash provided script takes a video input file, extracts its frames and appli
 ### Running with the vibe command:
 The algorithm can also be used using the /vibe command after compilation, which takes a set of RGB frames as input.
 To run the algorithm, you can simply do:
-
-  vibe [options] image1 image2 [image3 ... imageN]
+```Shell
+vibe [options] image1 image2 [image3 ... imageN]
+```
