@@ -290,7 +290,7 @@ int main(int argc, char ** argv)
   clock_t end = clock();
   double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
   int fps = F / time_spent;
-  printf("\nExecution time: %f seconds  |  %d fps\n", time_spent, fps);
+  printf("\nExecution time: %f seconds  |  %d fps\n\n", time_spent, fps);
 }
 
 /*----------------------------------------------------------------------------*/

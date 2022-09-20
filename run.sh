@@ -23,4 +23,4 @@ ffmpeg -framerate 10 -pattern_type glob -i "imdir/*.png" -pix_fmt yuv420p input.
 ffmpeg -framerate 10 -pattern_type glob -i "masks/*.png" -pix_fmt yuv420p output.mov
 
 # Zip output dir
-zip -r masks.zip masks
+zip -qq -r masks.zip masks
