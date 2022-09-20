@@ -238,6 +238,9 @@ int main(int argc, char ** argv)
   if( matchingNumber <= 0 ) error("Matching number must be greater than 0");
   if( updateFactor <= 0 ) error("Update factor must be greater than 0");
   F = argc - 1;
+
+  /* Start execution time tracking */
+  clock_t begin = clock();
   
   /* Iterate through sequence */
   for(n=0; n<F; n++) 
@@ -282,6 +285,12 @@ int main(int argc, char ** argv)
 
   /* Cleanup allocated memory. */
   libvibeModel_Sequential_Free(model);
+
+  /* Start execution time tracking */
+  clock_t end = clock();
+  double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+  int fps = F / time_spent;
+  printf("\nExecution time: %f seconds  |  %d fps\n", time_spent, fps);
 }
 
 /*----------------------------------------------------------------------------*/
