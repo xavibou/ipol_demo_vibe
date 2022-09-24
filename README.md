@@ -2,7 +2,7 @@
 
 This repository constitutes the implementation of a [demo IPOL](https://ipolcore.ipol.im/demo/clientApp/demo.html?id=77777000287) of the popular background subtraction algorithm ViBe.
 
-https://user-images.githubusercontent.com/32686698/192092930-be59b79e-0957-459a-8642-8fb91a8c6f56.mov
+![](https://github.com/xavibou/ipol_demo_vibe/blob/main/demo_teaser.gif)
 
 ## Requirements:
     ffmpeg
