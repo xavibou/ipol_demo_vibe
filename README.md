@@ -24,9 +24,19 @@ The bash provided script takes a video input file, extracts its frames and appli
 ```Shell
 bash run.sh [path to input file] [numberOfSamples] [matchingThreshold] [matchingNumber] [updateFactor]
 ```
+The output will consist of the following:
+
+* imdir/: directory containing the input frames
+* masks/: directory containint the output binary masks
+* input.mov: video file of the input at a lower frame rate (this is done for demo visualization purposes)
+* output.mov: video file of the output binary masks at the same frame rate as input.mov
+* masks.zip: zip file containing the output frames (this is done for demo usability)
+
 
 ### Running with the vibe command:
 The algorithm can also be used using the /vibe command after compilation, which takes a set of RGB frames as input. To run the algorithm, you can simply do:
 ```Shell
 vibe [options] image1 image2 [image3 ... imageN]
 ```
+
+This will create the output binary masks in the same directory of the provided input frames
