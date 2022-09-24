@@ -38,5 +38,8 @@ The algorithm can also be used using the /vibe command after compilation, which 
 ```Shell
 vibe [options] image1 image2 [image3 ... imageN]
 ```
-
-This will create the output binary masks in the same directory of the provided input frames
+For a directory imdir/ containing a set of frames as .png files, an example command to run the method is:
+```Shell
+vibe -s 20 -r 20 -c 2 -uf 16 imdir/*png
+```
+This will create the output binary masks in the same directory of the provided input frames.
