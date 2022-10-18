@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------
 
-  Copyright (c) 2018-2022 Xavier Bou Hernandez <xavibouhae@gmail.com>
+  Copyright (c) 2018-2022 rafael grompone von gioi <grompone@gmail.com>
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU Affero General Public License as
@@ -23,6 +23,7 @@
 #include <time.h>
 #include <limits.h>
 #include "iio.h"
+#include "frame_difference.h"
 #include "vibe-background-sequential.h"
 
 /*----------------------------------------------------------------------------*/
@@ -205,6 +206,7 @@ void usage()
   fprintf(stderr," -r matchingThreshold   sets the radius R (refer to article) or matching threshold\n");
   fprintf(stderr," -c matchingNumber   sets the minimum cardinality (refer to article) or number of matches\n");
   fprintf(stderr," -uf updateFactor   sets the update factor for the update mechanism\n");
+  fprintf(stderr," --frameDiff   applies three-frame difference for quick ghost and shadow elimination\n");
   fprintf(stderr,"\n");
   fprintf(stderr,"The output images are stored with the same name and path as");
   fprintf(stderr," the\ninput images but adding the suffix '_mask.png'.");
@@ -227,6 +229,12 @@ int main(int argc, char ** argv)
   int matchingThreshold = atoi(get_option_arg(&argc,&argv,"-r","20"));
   int matchingNumber = atoi(get_option_arg(&argc,&argv,"-c","2"));
   int updateFactor = atoi(get_option_arg(&argc,&argv,"-uf","16"));
+  int frameDiff = get_option(&argc,&argv,"--frameDiff");
+
+  /* Frame differencing variables*/
+  vibeFrameDifference_t *fDmodel = NULL;
+  uint8_t *frame_difference_map = NULL;
+
 
   /* usage */
   if( argc < 3 ) usage();
@@ -253,7 +261,7 @@ int main(int argc, char ** argv)
 
     if( !n )
     {
-      /* init ViBe model and set the parameters */
+      /* Initialize ViBe model and set the parameters */
       model = (vibeModel_Sequential_t *)libvibeModel_Sequential_New();
       libvibeModel_Sequential_SetNumberOfSamples(model, numberOfSamples);
       libvibeModel_Sequential_SetMatchingThreshold(model, matchingThreshold);
@@ -262,16 +270,35 @@ int main(int argc, char ** argv)
       /* Allocates the model and initialize it with the first image. */
       libvibeModel_Sequential_AllocInit_8u_C3R(model, image, X, Y);
       libvibeModel_Sequential_SetUpdateFactor(model, updateFactor);
+
+      if (frameDiff){
+        /* Initialize frame differencing model */
+        fDmodel = (vibeFrameDifference_t *)vibeFrameDifference_New();
+        vibeFrameDifference_Init(fDmodel, image, X, Y);
+      }
     }
 
     segmentation_map = (uint8_t*)malloc(X * Y * sizeof(uint8_t));
+    frame_difference_map = (uint8_t*)malloc(X * Y * sizeof(uint8_t));
 
     /* Segmentation step: produces the output mask. */
     libvibeModel_Sequential_Segmentation_8u_C3R(model, image, segmentation_map);
 
+    if (frameDiff){
+      /* Get three-frame difference map */
+      vibeFrameDifference_Add_Frame(fDmodel, image);
+
+      // Start aplying frame difference after processing 3rd frame
+      if (n > 2){
+        // Compute frame diff and store it in frame_difference_map
+        vibeFrameDifference_ComputeFrameDifference(fDmodel, segmentation_map, frame_difference_map);
+      } // if
+    } // if
+
     /* Next, we update the model. This step is optional. */
     libvibeModel_Sequential_Update_8u_C3R(model, image, segmentation_map);
 
+    /* Write mask */
     char filename[512];
     FILE *fp;
     sprintf(filename, "%s_mask.png", argv[n + 1]);
@@ -290,7 +317,7 @@ int main(int argc, char ** argv)
   clock_t end = clock();
   double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
   int fps = F / time_spent;
-  printf("\nExecution time: %f seconds  |  %d fps\n\n", time_spent, fps);
+  printf("\nExecution time: %f seconds  |  %d fps\n", time_spent, fps);
 }
 
 /*----------------------------------------------------------------------------*/
