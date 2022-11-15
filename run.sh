@@ -8,13 +8,22 @@ s=$2
 r=$3
 c=$4
 uf=$5
+fd=$6
 
 # Extract frames into a new directory
 mkdir imdir
 ffmpeg -i $1 -vsync vfr imdir/out%08d.png
 
-# Apply vibe on the sequence
-/vibe -s $s -r $r -c $c -uf $uf imdir/*
+# Apply ViBe on the sequence
+if [ $6 = true ]; then
+    # Use frame differencing
+    ./vibe -s $s -r $r -c $c -uf $uf --frameDiff imdir/*
+fi
+
+if [ $6 =c false ]; then
+    # Do not use frame differencing
+    ./vibe -s $s -r $r -c $c -uf $uf imdir/*
+fi
 
 # Move output files on a new directory and generate the two sequences
 mkdir masks

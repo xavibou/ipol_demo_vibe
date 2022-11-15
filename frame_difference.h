@@ -1,41 +1,21 @@
-/**
-    @file vibe-background-sequential.h
-    @brief Interface for the ViBe library
+/*----------------------------------------------------------------------------
 
-    @author Marc Van Droogenbroeck 
+  Copyright (c) Xavier Bou Hernandez <xavibouhae@gmail.com>
 
-    @date July 2014
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as
+  published by the Free Software Foundation, either version 3 of the
+  License, or (at your option) any later version.
 
-    @details
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
 
-  Full documentation is available online at:
-     http://www.ulg.ac.be/telecom/research/vibe/doc
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-  All technical details are available in the following paper:
-<em>O. Barnich and M. Van Droogenbroeck. ViBe: A universal background subtraction algorithm for video sequences. IEEE Transactions on Image Processing, 20(6):1709-1724, June 2011.</em>
-
-\verbatim
-BiBTeX information
-
-  @article{Barnich2011ViBe,
-  title = {{ViBe}: A universal background subtraction algorithm for video sequences},
-  author = {O. Barnich and M. {Van Droogenbroeck}},
-  journal = {IEEE Transactions on Image Processing},
-  volume = {20},
-  number = {6},
-  pages = {1709-1724},
-  month = {June},
-  year = {2011},
-  keywords = {ViBe, Background, Background subtraction, Segmentation, Motion, Motion detection},
-  pdf = {http://orbi.ulg.ac.be/bitstream/2268/145853/1/Barnich2011ViBe.pdf},
-  doi = {10.1109/TIP.2010.2101613},
-  url = {http://hdl.handle.net/2268/145853}
-  }
-\endverbatim
-
-See
-\cite Barnich2011ViBe
-*/
+  ----------------------------------------------------------------------------*/
 
 
 #ifdef __cplusplus
